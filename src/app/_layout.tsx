@@ -6,21 +6,23 @@ import { View, StyleSheet, Platform, BackHandler } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { Colors } from '@/constants/colors';
 
-// Prevent splash screen from auto-hiding before UI is ready
+// Prevent splash screen from auto-hiding until ready
 SplashScreen.preventAutoHideAsync().catch(() => {
   /* ignore */
 });
 
 export default function RootLayout() {
   useEffect(() => {
-    // Hide splash screen once mounted
+    // Hide splash screen once root is ready
     SplashScreen.hideAsync().catch(() => {
       /* ignore */
     });
 
-    // Android back handler fallback
     if (Platform.OS === 'android') {
-      const backAction = () => false; // allow standard back navigation
+      const backAction = () => {
+        // Standard Android back navigation
+        return false;
+      };
       const backHandler = BackHandler.addEventListener(
         'hardwareBackPress',
         backAction

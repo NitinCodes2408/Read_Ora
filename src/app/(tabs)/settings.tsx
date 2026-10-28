@@ -60,11 +60,19 @@ export default function SettingsScreen() {
               <Ionicons name="person" size={24} color={Colors.gold.primary} />
             </View>
             <View style={styles.profileText}>
-              <Text style={styles.profileName}>Local Reader</Text>
-              <Text style={styles.profileSub}>Private Offline Account</Text>
+              <Text style={styles.profileName} numberOfLines={1}>
+                Local Reader
+              </Text>
+              <Text style={styles.profileSub}>
+                100% Private Offline Library
+              </Text>
             </View>
             <View style={styles.activePill}>
-              <Ionicons name="shield-checkmark" size={13} color={Colors.status.success} />
+              <Ionicons
+                name="shield-checkmark"
+                size={13}
+                color={Colors.status.success}
+              />
               <Text style={styles.activePillText}>Offline</Text>
             </View>
           </View>
@@ -413,6 +421,19 @@ const styles = StyleSheet.create({
   infoValue: {
     fontSize: FontSize.xs,
     color: Colors.text.secondary,
+  },
+  badgeMini: {
+    backgroundColor: 'rgba(229, 186, 88, 0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(229, 186, 88, 0.25)',
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: BorderRadius.xs,
+  },
+  badgeMiniText: {
+    fontSize: FontSize.xxs,
+    fontWeight: FontWeight.semiBold,
+    color: Colors.gold.primary,
   },
   footer: {
     alignItems: 'center',

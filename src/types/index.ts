@@ -34,13 +34,33 @@ export type ImportResult =
   | { success: true; book: Book; isDuplicate?: boolean }
   | { success: false; canceled?: boolean; error?: string; reason?: string };
 
+export interface Bookmark {
+  id: string;
+  bookId: string;
+  page: number;
+  title?: string;
+  createdAt: string;
+}
+
+export interface Chapter {
+  id: string;
+  title: string;
+  href?: string;
+  contentHtml?: string;
+}
+
+export type ReadingMode = 'paged' | 'scroll';
+
 export interface ReadingSessionStats {
   readingStreakDays: number;
   totalReadingMinutes: number;
   booksCompletedCount: number;
+  weeklyActivity: { day: string; minutes: number; completed: boolean }[];
   currentBook?: {
+    id: string;
     title: string;
     progressPercent: number;
+    format: BookFormat;
   };
 }
 
@@ -58,4 +78,5 @@ export interface UserPreferences {
   fontSize: number;
   fontFamily: 'default' | 'serif' | 'sans' | 'mono';
   lineSpacing: 'normal' | 'relaxed' | 'loose';
+  readingMode: ReadingMode;
 }
