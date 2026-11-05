@@ -1,10 +1,6 @@
 import React, { useEffect, useCallback, useRef } from 'react';
-import { View, StyleSheet, Pressable, Text, StatusBar, Platform } from 'react-native';
+import { View, StyleSheet, StatusBar, Platform } from 'react-native';
 import { useVideoPlayer, VideoView } from 'expo-video';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
-import { FontSize, FontWeight } from '@/constants/typography';
-import { BorderRadius, Spacing } from '@/constants/spacing';
 
 interface IntroVideoScreenProps {
   onFinish: () => void;
@@ -13,7 +9,6 @@ interface IntroVideoScreenProps {
 const introVideoSource = require('../../../assets/videos/ReadOra-Intro-8sec-Clean.mp4');
 
 export const IntroVideoScreen: React.FC<IntroVideoScreenProps> = ({ onFinish }) => {
-  const insets = useSafeAreaInsets();
   const hasFinishedRef = useRef(false);
 
   const safeFinish = useCallback(() => {
@@ -29,20 +24,20 @@ export const IntroVideoScreen: React.FC<IntroVideoScreenProps> = ({ onFinish }) 
   });
 
   useEffect(() => {
-    // 1. Listen for video finish event
+    // 1. Listen for video finish event when playback completes naturally
     const subEnd = player.addListener('playToEnd', () => {
       safeFinish();
     });
 
-    // 2. Listen for playback errors
+    // 2. Listen for playback status changes or errors
     const subStatus = player.addListener('statusChange', ({ status, error }) => {
       if (status === 'error' || error) {
-        console.warn('[IntroVideo] Playback error encountered, continuing to app:', error);
+        console.warn('[IntroVideo] Playback error encountered, opening app:', error);
         safeFinish();
       }
     });
 
-    // 3. Safety watchdog timer (8.5 seconds max for 8s video) to prevent any hang
+    // 3. Safety watchdog timer (8.5 seconds for 8s video) to guarantee opening the app
     const watchdogTimer = setTimeout(() => {
       safeFinish();
     }, 8500);
@@ -63,26 +58,6 @@ export const IntroVideoScreen: React.FC<IntroVideoScreenProps> = ({ onFinish }) 
         contentFit="contain"
         nativeControls={false}
       />
-      <View
-        style={[
-          styles.skipOverlay,
-          {
-            top: Math.max(insets.top + Spacing.sm, 24),
-            right: Math.max(insets.right + Spacing.md, 20),
-          },
-        ]}
-      >
-        <Pressable
-          onPress={safeFinish}
-          style={({ pressed }) => [styles.skipButton, pressed && styles.skipButtonPressed]}
-          hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
-          accessibilityRole="button"
-          accessibilityLabel="Skip intro video"
-        >
-          <Text style={styles.skipText}>Skip</Text>
-          <Ionicons name="chevron-forward" size={14} color="rgba(255, 255, 255, 0.75)" />
-        </Pressable>
-      </View>
     </View>
   );
 };
@@ -93,29 +68,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#0B0E14',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  skipOverlay: {
-    position: 'absolute',
-    zIndex: 10,
-  },
-  skipButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    backgroundColor: 'rgba(11, 14, 20, 0.75)',
-    borderWidth: 1,
-    borderColor: 'rgba(229, 186, 88, 0.35)',
-    borderRadius: BorderRadius.full,
-    paddingVertical: 6,
-    paddingHorizontal: 14,
-  },
-  skipButtonPressed: {
-    opacity: 0.7,
-  },
-  skipText: {
-    color: 'rgba(255, 255, 255, 0.9)',
-    fontSize: FontSize.xs,
-    fontWeight: FontWeight.medium,
-    letterSpacing: 0.5,
   },
 });

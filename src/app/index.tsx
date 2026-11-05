@@ -36,10 +36,18 @@ export default function Index() {
     };
   }, []);
 
-  const handleFinishIntro = useCallback(() => {
+  const handleFinishIntro = useCallback(async () => {
     hasPlayedIntroThisSession = true;
     setShowIntro(false);
-    const onboarded = hasOnboardedRef.current ?? false;
+
+    let onboarded = hasOnboardedRef.current;
+    if (onboarded === null) {
+      try {
+        onboarded = await getHasCompletedOnboarding();
+      } catch {
+        onboarded = false;
+      }
+    }
     router.replace(onboarded ? '/(tabs)/home' : '/onboarding');
   }, [router]);
 
