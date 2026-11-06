@@ -15,13 +15,15 @@
   <img src="https://img.shields.io/badge/React_Native-0.88.0-61DAFB?style=for-the-badge&logo=react&logoColor=black"/>
   <img src="https://img.shields.io/badge/Expo-SDK_58-000020?style=for-the-badge&logo=expo"/>
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge"/>
 </p>
 
 <p align="center">
-  <a href="https://github.com/NitinCodes2408/Read_Ora">GitHub Repository</a> •
+  <a href="https://github.com/NitinCodes2408/Read_Ora">Repository</a> •
   <a href="#-features">Features</a> •
   <a href="#-screenshots">Screenshots</a> •
-  <a href="#-installation">Installation</a>
+  <a href="#-installation">Installation</a> •
+  <a href="#-license">License</a>
 </p>
 
 ---
@@ -45,6 +47,7 @@ To create a simple, elegant and personalized digital reading ecosystem that enco
 ## 🚀 Features
 
 ### 📚 1. Personal Digital Library
+
 - Import books directly from your device.
 - Manage your personal digital book collection.
 - Keep imported books organized in one place.
@@ -61,36 +64,42 @@ Read your favourite books in multiple formats.
 | TXT | Read plain text documents in a clean interface. |
 
 ### 🔖 3. Bookmarks & Highlights
+
 - Bookmark important reading positions.
 - Highlight meaningful passages.
 - Save important sections for later.
 - Easily return to saved reading positions.
 
 ### 📊 4. Reading Insights
+
 - Monitor your reading activity.
 - Track reading progress.
 - View reading statistics.
 - Understand your reading habits.
 
 ### 🔍 5. Discover Books
+
 - Explore books through the Discover section.
 - Browse available book information.
 - Find new reading material.
 - Access online discovery features when internet connectivity is available.
 
 ### 🎨 6. Personalized Reading Experience
+
 - Customizable reading preferences.
 - Comfortable reading interface.
 - Premium dark-themed design.
 - Clean and distraction-free reading environment.
 
 ### 💾 7. Offline-First Experience
+
 - Locally stored book files.
 - Offline access to imported books.
 - Local reading data management.
 - Core reading functionality without continuous internet connectivity.
 
 ### 🌟 8. Premium User Experience
+
 - Dedicated onboarding experience.
 - Elegant application branding.
 - Animated application introduction.
@@ -102,10 +111,10 @@ Read your favourite books in multiple formats.
 ## 📱 Screenshots
 
 <p align="center">
-  <b>Explore the ReadOra experience</b>
+  <b>Explore the ReadOra Experience</b>
 </p>
 
-<!-- Replace these image paths with your actual application screenshots. -->
+<!-- Add your actual application screenshots inside assets/screenshots/ -->
 
 | Home Screen | My Library |
 |:---:|:---:|
@@ -184,10 +193,11 @@ Read_Ora/
 ├── package.json
 ├── tsconfig.json
 ├── README.md
+├── LICENSE
 └── .gitignore
 ```
 
-*The structure above is a high-level representation. Refer to the actual repository for the complete project organization.*
+*This is a high-level representation. Refer to the actual repository for the complete project organization.*
 
 ---
 
@@ -305,9 +315,13 @@ Please discuss major changes before starting substantial development.
 
 ## 📄 License
 
-No open-source license has currently been specified.
+ReadOra is licensed under the **MIT License**.
 
-All rights are reserved by the project owner unless a license is added to this repository.
+Copyright (c) 2026 Nitin Bhandare.
+
+You are free to use, copy, modify, merge, publish, distribute, sublicense and sell copies of the software, subject to the terms of the MIT License.
+
+See the [LICENSE](LICENSE) file for complete license terms.
 
 ---
 
