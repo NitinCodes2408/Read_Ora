@@ -18,15 +18,7 @@
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge"/>
 </p>
 
-<p align="center">
-  <a href="https://github.com/NitinCodes2408/Read_Ora">Repository</a> •
-  <a href="#-features">Features</a> •
-  <a href="#-screenshots">Screenshots</a> •
-  <a href="#-installation">Installation</a> •
-  <a href="#-license">License</a>
-</p>
 
----
 
 ## 📖 About ReadOra
 
